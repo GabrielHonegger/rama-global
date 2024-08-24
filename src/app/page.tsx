@@ -18,7 +18,7 @@ export default function Home() {
           </ul>
        </div>
        <div className="flex w-1/4 ml-5 items-center">
-        <button className="font-normal uppercase text-[14px] mr-0 bg-slate-950 ml-auto py-3 px-6 rounded-full text-white">
+        <button className="font-inter uppercase text-[14px] mr-0 bg-slate-950 ml-auto py-3 px-6 rounded-full text-white">
           Solicitar um orçamento
         </button>
        </div>
@@ -29,7 +29,7 @@ export default function Home() {
       </nav>
       <div id="hero" className="m-auto mt-6 w-10/12">
         <div>
-          <h1 className="text-6xl text-center m-auto mt-0 font-corben text-new-green w-2/3">
+          <h1 className="text-6xl text-center m-auto mt-0 text-new-green w-2/3">
             Conectando Sua Empresa ao Sucesso Sustentável
           </h1>
           <h2 className="text-xl text-center font-thin m-auto mt-4 font-corben text-new-green w-2/3">

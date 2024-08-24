@@ -14,7 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        'corben': ['Corben']
+        'corben': ['Corben', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif']
       },
       colors: {
         'new-green': '#293B20',
