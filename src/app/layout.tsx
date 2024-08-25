@@ -28,7 +28,10 @@ export default function RootLayout({
       <head>
       <link rel="icon" href="/icon.ico"/>
       </head>
-      <body className={corben.className}>{children}</body>
+      <body className={corben.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
