@@ -183,6 +183,47 @@ export default function Home() {
         <h1 className="text-5xl text-center m-auto pt-5 font-corben text-new-green w-2/3">
           Contato
         </h1>
+        <div className="flex w-10/12 m-auto">
+          <div>
+          <p className="text-lg w-1/2 p-5 mt-5 ml-16">Entre em contato conosco por telefone ou visite-nos a qualquer momento. 
+            Nos dedicamos a responder a todas as suas perguntas dentro de 24 horas em 
+            dias úteis e teremos o maior prazer em esclarecer suas dúvidas.</p>
+          <div>
+            <div className="p-5 pl-20 flex flex-col">
+              <div className="flex mb-10">
+                <div>
+                  <img src="local.png" alt="local" className="w-8 object-contain mr-4 mt-1" />
+                  {/* #FF8A35 */}
+                </div>
+                <div>
+                  <h2 className="text-lg mb-2">Nosso endereço:</h2>
+                  <p className="text-lg text-gray-600">Av. Sete de Setembro, 4995 - Batel - Curitiba - PR, 80250-205, Brasil</p>
+                </div>
+              </div>
+              <div className="flex mb-10">
+                <div>
+                  <img src="email.png" alt="email" className="w-8 object-contain mr-4 mt-1" />
+                  {/* #FF8A35 */}
+                </div>
+                <div>
+                  <h2 className="text-lg mb-2">Nosso email:</h2>
+                  <p className="text-lg text-gray-600">contato@ramaglobal.com.br</p>
+                </div>
+              </div>
+              <div className="flex">
+                <div>
+                  <img src="telefone.png" alt="telefone" className="w-8 object-contain mr-4 mt-1" />
+                  {/* #FF8A35 */}
+                </div>
+                <div>
+                  <h2 className="text-lg mb-2">Nosso telefone</h2>
+                  <p className="text-lg text-gray-600">+55 (41) 9873-0077</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
     </main>
   );
