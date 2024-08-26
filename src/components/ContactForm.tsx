@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -43,11 +43,27 @@ export default function ContactForm() {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+    const [successMessage, setSuccessMessage] = useState("");
+
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+      const {name, email, message } = values;
+
+      try {
+        await fetch('/api/emails', {
+          method: "POST",
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message
+          })
+        })
         console.log(values)
+        setSuccessMessage('Mensagem enviada com sucesso!')
+        form.reset()
+      } catch (error) {
+        console.error('Failed to submit the form', error);
       }
+    }
 
       return (
         <Form {...form}>
@@ -102,6 +118,7 @@ export default function ContactForm() {
               )}
             />
             <Button type="submit" className='uppercase font-inter'>Enviar Mensagem</Button>
+            {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
           </form>
         </Form>
       )

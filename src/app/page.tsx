@@ -1,33 +1,11 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   return (
     <main className="m-auto">
-      <nav className="h-20 w-10/12 m-auto flex justify-between">
-        <div id="menu-logo" className="my-2">
-          <img className="w-28" src="./logo-rama-global.png" alt="logo" />
-        </div>
-       <div className="ml-20 flex">
-          <ul className="flex space-x-8 items-center  text-[17px]">
-            <li><a href="">Início</a></li>
-            <li><a href="">Serviços</a></li>
-            <li><a href="">Quem Somos</a></li>
-            <li><a href="">Clientes</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contato</a></li>
-          </ul>
-       </div>
-       <div className="flex w-1/4 ml-5 items-center">
-        <button className="font-inter uppercase text-[14px] mr-0 bg-slate-950 ml-auto py-3 px-6 rounded-full text-white">
-          Solicitar um orçamento
-        </button>
-       </div>
-       <div className="flex space-x-4 text-trans items-center w-15">
-          <img className="w-5 cursor-pointer" src="./instagram.png" alt="instagram-logo" />
-          <img className="w-5 cursor-pointer" src="./facebook.png" alt="instagram-logo" />
-       </div>
-      </nav>
+      <NavBar />
       <div id="hero" className="m-auto mt-6 w-10/12">
         <div>
           <h1 className="text-6xl text-center m-auto mt-0 text-new-green w-2/3">
@@ -153,21 +131,21 @@ export default function Home() {
         <h2 className="text-xl text-center m-auto pt-2  text-new-green w-2/3">
           Conheça alguns de nossos clientes
         </h2>
-        <div className="flex w-10/12 m-auto justify-between mt-8">
+        <div className="flex w-10/12 m-auto flex-wrap justify-between mt-8">
           <img src="clientes/cliente1.png" alt="cliente1" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente3.png" alt="cliente3" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente4.png" alt="cliente4" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente5.png" alt="cliente5" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente6.png" alt="cliente6" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
         </div>
-        <div className="flex w-10/12 m-auto justify-between mt-6">
+        <div className="flex w-10/12 flex-wrap m-auto justify-between mt-6">
           <img src="clientes/cliente7.png" alt="cliente7" className="object-contain w-[160px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente8.jpg" alt="cliente8" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente9.jpg" alt="cliente9" className="object-contain w-[250px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente10.jpg" alt="cliente10" className="object-contain w-[150px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente11.jpg" alt="cliente11" className="object-contain w-[120px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
         </div>
-        <div className="flex w-10/12 m-auto justify-between mt-6">
+        <div className="flex w-10/12 m-auto flex-wrap justify-between mt-6">
           <img src="clientes/cliente12.jpg" alt="cliente12" className="object-contain w-[150px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente13.jpg" alt="cliente13" className="object-contain w-[150px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
           <img src="clientes/cliente14.jpg" alt="cliente14" className="object-contain w-[200px] grayscale hover:grayscale-0 hover:bg-white rounded-lg p-5 transition duration-100" />
