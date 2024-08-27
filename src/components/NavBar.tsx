@@ -40,7 +40,7 @@ const NavBar = () => {
             </div>
         </div>
         <button onClick={toggleMenu} className='w-full z-20 flex justify-end p-5 max-w-[900px] lg:hidden'>
-            <img src={isOpen ? "menu-fechado.png" : "menu-aberto.png" } alt="menu" className={isOpen ? "w-8 h-8 fixed" : "w-10 h-10"} />
+            <img src={isOpen ? "menu-fechado.png" : "menu-aberto.png" } alt="menu" className={isOpen ? "w-6 h-6 fixed" : "w-8 h-8"} />
         </button>
         <div className={`w-3/4 border-l border-gray-800 bg-white pt-14 top-0 right-0 bottom-0 z-10 h-screen fixed flex-col items-center ${isOpen ? "flex" : "hidden"} lg:hidden`}>
             <div className="flex flex-col min-w-full items-center justify-center">
