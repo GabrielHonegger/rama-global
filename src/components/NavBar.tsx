@@ -40,11 +40,11 @@ const NavBar = () => {
             </div>
         </div>
         <button onClick={toggleMenu} className='w-full z-20 flex justify-end p-5 max-w-[900px] lg:hidden'>
-            <img src={isOpen ? "menu-fechado.png" : "menu-aberto.png" } alt="menu" className={isOpen ? "w-8 h-8" : "w-10 h-10"} />
+            <img src={isOpen ? "menu-fechado.png" : "menu-aberto.png" } alt="menu" className={isOpen ? "w-8 h-8 fixed" : "w-10 h-10"} />
         </button>
-        <div className={`w-2/3 border-l border-gray-800 bg-white pt-20 right-0 bottom-0 z-10 h-screen fixed flex-col items-center ${isOpen ? "flex" : "hidden"} lg:hidden`}>
+        <div className={`w-3/4 border-l border-gray-800 bg-white pt-14 top-0 right-0 bottom-0 z-10 h-screen fixed flex-col items-center ${isOpen ? "flex" : "hidden"} lg:hidden`}>
             <div className="flex flex-col min-w-full items-center justify-center">
-                <ul className="flex flex-col items-center space-y-12 text-xl mt-4">
+                <ul className="flex flex-col items-center space-y-12 text-lg mt-4">
                     <li><a href="">Início</a></li>
                     <li><a href="">Serviços</a></li>
                     <li><a href="">Quem Somos</a></li>
@@ -53,12 +53,12 @@ const NavBar = () => {
                     <li><a href="">Contato</a></li>
                 </ul>
             </div>
-            <div className="flex items-center justify-center mt-4">
-                <button className="font-inter uppercase w-full text-md mt-5 bg-slate-950 py-3 px-6 rounded-full text-white">
+            <div className="flex items-center justify-center mt-8">
+                <button className="font-inter uppercase w-full text-[14px] mt-5 bg-slate-950 py-3 px-6 rounded-full text-white">
                 Solicitar um orçamento
                 </button>
             </div>
-            <div className="flex justify-center space-x-6 items-center mt-10">
+            <div className="flex justify-center space-x-6 items-center mt-8">
                 <a href="https://www.instagram.com/rama_global/" target="_blank">
                     <img className="w-6 cursor-pointer" src="./instagram.png" alt="instagram-logo" />
                 </a>

@@ -1,22 +1,13 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import NavBar from "@/components/NavBar";
+import Hero from '@/components/Hero'
 
 export default function Home() {
   return (
     <main className="m-auto">
       <NavBar />
-      <div id="hero" className="m-auto mt-6 w-10/12">
-        <div>
-          <h1 className="text-6xl text-center m-auto mt-0 text-new-green w-2/3">
-            Conectando Sua Empresa ao Sucesso Sustentável
-          </h1>
-          <h2 className="text-xl text-center font-thin m-auto mt-4  text-new-green w-2/3">
-            Oferecemos consultoria especializada que entende a cultura única de sua empresa.
-          </h2>
-        </div>
-        <img src="hero-image.jpg" alt="arvores" className="w-1/2 rounded-3xl m-auto mt-10" />
-      </div>
+      <Hero />
       <div id="services" className="bg-slate-50 mt-10 pb-4 w-full">
         <h1 className="text-5xl text-center m-auto pt-5  text-new-green w-2/3">
           Nossos Serviços
