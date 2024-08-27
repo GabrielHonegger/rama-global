@@ -5,9 +5,9 @@ const About = () => {
   return (
     <div id="about" className="mb-10">
         <Title title="Quem Somos" />
-        <div className="flex mt-5 flex-col">
+        <div className="flex mt-2 md:mt-5 flex-col">
           <div className="flex lg:flex-nowrap flex-wrap lg:w-10/12 md:11/12 w-full m-auto">
-            <div className="lg:w-1/2 md:p-10 w-full p-6">
+            <div className="lg:w-1/2 md:p-10 w-full p-6 pt-2">
               <h3 className="text-2xl mb-2">Rama Global</h3>
               <p className="md:text-lg text-md">
                 A Rama Global oferece consultoria para sua empresa, respeitando as diferenças 
