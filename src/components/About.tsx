@@ -7,7 +7,7 @@ const About = () => {
         <Title title="Quem Somos" />
         <div className="flex mt-5 flex-col">
           <div className="flex lg:flex-nowrap flex-wrap lg:w-10/12 md:11/12 w-full m-auto">
-            <div className="lg:w-1/2 md:p-10 w-full p-4">
+            <div className="lg:w-1/2 md:p-10 w-full p-6">
               <h3 className="text-2xl mb-2">Rama Global</h3>
               <p className="md:text-lg text-md">
                 A Rama Global oferece consultoria para sua empresa, respeitando as diferenças 
@@ -24,8 +24,8 @@ const About = () => {
             <div className="lg:w-1/2 w-full lg:m-0">
               <img src="quem-somos2.jpg" alt="nosso-objetivo" className="w-11/12 max-w-[500px] lg:mx-5 m-auto rounded-xl object-cover" />
             </div>
-            <div className="lg:w-1/2 w-full md:p-10 p-4 lg:pl-3 lg:pt-5">
-                <h3 className="text-3xl mb-2">Nosso Objetivo</h3>
+            <div className="lg:w-1/2 w-full md:p-10 p-6 lg:pl-3 lg:pt-5">
+                <h3 className="text-2xl mb-2">Nosso Objetivo</h3>
                 <p className="md:text-lg text-md">
                 Nos dias de hoje, as empresas enfrentam desafios significativos ao equilibrar o 
                 crescimento econômico com a responsabilidae ambiental. Com isso em mente, 

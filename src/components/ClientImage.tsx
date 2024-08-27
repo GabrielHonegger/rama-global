@@ -11,7 +11,8 @@ const ClientImage: React.FC<ClientImageProps> = ({ cliendId, imgFormat }) => {
         src={`clientes/cliente${cliendId}.${imgFormat}`} 
         alt={`cliente${cliendId}`} 
         className="object-contain md:max-w-[200px] max-w-[140px] m-auto grayscale hover:grayscale-0 hover:bg-white 
-        rounded-lg p-5 transition duration-100" />
+        rounded-lg p-5 transition duration-100" 
+    />
   )
 }
 
