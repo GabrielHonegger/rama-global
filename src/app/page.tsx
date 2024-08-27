@@ -162,7 +162,7 @@ export default function Home() {
         <h1 className="text-5xl text-center m-auto pt-5  text-new-green w-2/3">
           Contato
         </h1>
-        <div className="flex w-10/12 m-auto">
+        <div className="flex flex-wrap w-10/12 m-auto">
           <div className="w-full">
             <p className="text-lg p-5 mt-5 ml-16 pr-10">Entre em contato conosco por telefone ou visite-nos a qualquer momento. 
               Nos dedicamos a responder a todas as suas perguntas dentro de 24 horas em 
@@ -208,9 +208,9 @@ export default function Home() {
         </div>
       </div>
       <div id="whatsapp">
-        <a aria-label="Chat on WhatsApp" className="fixed right-7 bottom-7 bg-green-whatapp p-4 rounded-full cursor-pointer" href="https://wa.me/554198730077?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">
-        <img alt="Chat on WhatsApp" src="whatsapp.png" className="w-8" />
-      </a>
+        <a aria-label="Chat on WhatsApp" className="fixed z-20 right-7 bottom-7 bg-green-whatapp p-4 rounded-full cursor-pointer" href="https://wa.me/554198730077?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">
+          <img alt="Chat on WhatsApp" src="whatsapp.png" className="w-8" />
+        </a>
       </div>
     </main>
   );
