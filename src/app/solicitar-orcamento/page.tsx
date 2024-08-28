@@ -1,6 +1,7 @@
 import React from 'react';
 import BudgetForm from '@/components/BudgetForm';
 import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 
 const RequestQuote = () => {
   return (
@@ -12,6 +13,7 @@ const RequestQuote = () => {
             </h1>
             <BudgetForm />
         </div>
+        <Footer />
     </main>
   )
 }

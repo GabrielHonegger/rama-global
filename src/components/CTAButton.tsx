@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 interface CTAButtonProps {
@@ -6,9 +7,11 @@ interface CTAButtonProps {
 
 const CTAButton: React.FC<CTAButtonProps> = ({ text }) => {
   return (
-    <button className="border-2 border-orange-500 uppercase min-w-[250px] text-sm lg:text-[16px] hover:bg-white hover:text-orange-500 bg-orange-500 text-center py-[10px] px-6 rounded-full text-white transition duration-200">
+    <Link href='/solicitar-orcamento'>
+      <button className="border-2 border-orange-500 uppercase min-w-[250px] text-sm lg:text-[16px] hover:bg-white hover:text-orange-500 bg-orange-500 text-center py-[10px] px-6 rounded-full text-white transition duration-200">
         {text}
-    </button>
+      </button>
+    </Link>
   )
 }
 

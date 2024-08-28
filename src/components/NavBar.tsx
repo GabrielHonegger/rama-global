@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState } from 'react'
 
 const NavBar = () => {
@@ -17,18 +18,20 @@ const NavBar = () => {
         <div className='w-full lg:flex justify-between max-w-[900px] hidden'>
             <div className="flex min-w-[550px] justify-end">
                 <ul className="flex space-x-8 items-center  text-[17px]">
-                    <li><a href="#hero">Início</a></li>
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#about">Quem Somos</a></li>
-                    <li><a href="#clients">Clientes</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><Link href="/#hero">Início</Link></li>
+                    <li><Link href="/#services">Serviços</Link></li>
+                    <li><Link href="/#about">Quem Somos</Link></li>
+                    <li><Link href="/#clients">Clientes</Link></li>
+                    <li><Link href="/">Blog</Link></li>
+                    <li><Link href="/#contact">Contato</Link></li>
                 </ul>
             </div>
             <div className="flex w-1/4 items-center">
+                <Link href="/solicitar-orcamento">
                 <button className="border-2 border-slate-950 font-inter uppercase min-w-[250px] text-[14px] mr-5 hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto py-[10px] px-6 rounded-full text-white transition duration-200">
                 Solicitar um orçamento
                 </button>
+                </Link>
             </div>
             <div className="flex space-x-4 justify-between items-center w-15 px-3">
                 <a href="https://www.instagram.com/rama_global/" target="_blank">
