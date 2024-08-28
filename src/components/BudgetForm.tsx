@@ -55,7 +55,7 @@ const formSchema = z.object({
     })
   })
 
-function formatPhoneNumber(value) {
+function formatPhoneNumber(value: string): string {
   if (!value) return value;
   const phoneNumber = value.replace(/\D/g, '');
   if (phoneNumber.length < 3) return phoneNumber;
@@ -63,7 +63,7 @@ function formatPhoneNumber(value) {
   return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
 }
 
-function formatCNPJ(value) {
+function formatCNPJ(value: string): string {
   if (!value) return value;
   const cnpj = value.replace(/\D/g, '');
   if (cnpj.length <= 2) return cnpj;
