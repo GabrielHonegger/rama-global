@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div id="contact" className="mb-10">
         <Title title='Contato' />
-    <div className="flex flex-wrap md:flex-nowrap w-full p-6 lg:w-11/12 m-auto">
+    <div className="flex flex-wrap md:flex-nowrap w-full px-6 lg:w-11/12 m-auto">
       <div className="w-full">
         <p className="md:text-lg text-md md:p-5 md:mt-5 lg:ml-16 lg:pr-10">Entre em contato conosco por telefone ou visite-nos a qualquer momento. 
           Nos dedicamos a responder a todas as suas perguntas dentro de 24 horas em 
