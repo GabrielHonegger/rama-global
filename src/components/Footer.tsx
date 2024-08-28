@@ -9,7 +9,7 @@ const Footer = () => {
             <li><Link href="/#services">Serviços</Link></li>
             <li><Link href="/#about">Quem Somos</Link></li>
             <li><Link href="/#clients">Clientes</Link></li>
-            <li><Link href="/">Blog</Link></li>
+            <li><Link href="/blog">Blog</Link></li>
             <li><Link href="/#contact">Contato</Link></li>
         </ul>
         <p className='text-white text-center text-sm md:text-md'>
