@@ -1,5 +1,6 @@
 import React from 'react'
 import Title from './Title'
+import CTAButton from './CTAButton'
 
 const Hero = () => {
   return (
@@ -11,7 +12,10 @@ const Hero = () => {
           </h2>
         </div>
         <img src="hero-image.jpg" alt="arvores" className="w-10/12 sm:w-2/3 lg:w-1/2 rounded-3xl m-auto mt-3 lg:mt-6" />
-      </div>
+        <div className='m-auto text-center mt-8'>
+          <CTAButton text='Solicitar um orçamento' />
+        </div>
+    </div>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button';
 
 interface CertificationBoxProps {
     title: string;
@@ -17,9 +18,7 @@ const CertificationBox: React.FC<CertificationBoxProps> = ({ title, description,
             {description}
         </p>
         <div className="flex justify-center mb-5">
-            <button className="border-2 rounded-full border-orange-400 text-orange-400 px-4 py-2 mb-3 text-md hover:text-white hover:bg-orange-400">
-            Mais Informações
-            </button>
+            <Button text="Mais Informações" />
         </div>
     </div>
   )

@@ -58,7 +58,7 @@ export default function ContactForm() {
           })
         })
         console.log(values)
-        setSuccessMessage('Mensagem enviada com sucesso!')
+        setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
         form.reset()
       } catch (error) {
         console.error('Failed to submit the form', error);
@@ -117,7 +117,7 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className='uppercase font-inter'>Enviar Mensagem</Button>
+            <Button type="submit" className='uppercase font-inter rounded-full'>Enviar Mensagem</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
           </form>
         </Form>

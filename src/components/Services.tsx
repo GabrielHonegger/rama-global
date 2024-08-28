@@ -1,6 +1,7 @@
 import React from 'react'
 import CertificationBox from './CertificationBox'
 import Title from './Title'
+import CTAButton from './CTAButton'
 
 const Services = () => {
   return (
@@ -34,6 +35,9 @@ const Services = () => {
                 buscam opções ecológicas e ajudando-os a escolher produtos menos nocivos ao meio ambiente.'
                 imgSrc='rotulo-ecologico-logo.png'
             />
+        </div>
+        <div className='m-auto text-center mt-8 pb-5'>
+          <CTAButton text='Começar Agora' />
         </div>
       </div>
   )

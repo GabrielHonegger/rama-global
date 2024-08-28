@@ -26,7 +26,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="flex w-1/4 items-center">
-                <button className="font-inter uppercase min-w-[250px] text-[14px] mr-5 bg-slate-950 ml-auto py-3 px-6 rounded-full text-white">
+                <button className="border-2 border-slate-950 font-inter uppercase min-w-[250px] text-[14px] mr-5 hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto py-[10px] px-6 rounded-full text-white transition duration-200">
                 Solicitar um orçamento
                 </button>
             </div>

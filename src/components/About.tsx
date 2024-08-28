@@ -1,5 +1,6 @@
 import React from 'react'
 import Title from './Title'
+import CTAButton from './CTAButton'
 
 const About = () => {
   return (
@@ -35,6 +36,9 @@ const About = () => {
                 </p>
             </div>
           </div>
+        </div>
+        <div className='m-auto text-center mt-10'>
+          <CTAButton text='Solicitar Consultoria' />
         </div>
       </div>
   )

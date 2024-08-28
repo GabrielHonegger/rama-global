@@ -1,6 +1,7 @@
 import React from 'react';
 import ContactForm from './ContactForm';
 import Title from './Title';
+import CTAButton from './CTAButton';
 
 const Contact = () => {
   return (
@@ -46,6 +47,9 @@ const Contact = () => {
       <div className="w-full mt-5 lg:p-10">
         <ContactForm />
       </div>
+    </div>
+    <div className='m-auto text-center lg:mt-5 mt-10'>
+          <CTAButton text='Solicite um orçamento' />
     </div>
   </div>
   )

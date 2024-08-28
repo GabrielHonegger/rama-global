@@ -27,7 +27,7 @@ const Clients = () => {
             <ClientImage cliendId='16' imgFormat='jpg' />
         </div>
         <div className="flex">
-          <button className="m-auto border-2 rounded-full border-orange-400 text-orange-400 px-4 py-2 mb-3 text-md hover:text-white hover:bg-orange-400 mt-2">
+          <button className="m-auto border-2 rounded-full border-orange-400 text-orange-400 px-4 py-2 mb-3 text-md hover:text-white hover:bg-orange-400 mt-2 transition duration-200">
               Ver Mais
           </button>
         </div>
