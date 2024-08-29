@@ -52,14 +52,16 @@ const NavBar = () => {
                     <li><a href="#services">Serviços</a></li>
                     <li><a href="#about">Quem Somos</a></li>
                     <li><a href="#clients">Clientes</a></li>
-                    <li><a href="">Blog</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
             </div>
             <div className="flex items-center justify-center mt-8">
-                <button className="font-inter uppercase w-full text-[14px] mt-5 bg-slate-950 py-3 px-6 rounded-full text-white">
-                Solicitar um orçamento
-                </button>
+                <Link href="/solicitar-orcamento">
+                    <button className="font-inter uppercase w-full text-[14px] mt-5 bg-slate-950 py-3 px-6 rounded-full text-white">
+                    Solicitar um orçamento
+                    </button>
+                </Link>
             </div>
             <div className="flex justify-center space-x-6 items-center mt-8">
                 <a href="https://www.instagram.com/rama_global/" target="_blank">
