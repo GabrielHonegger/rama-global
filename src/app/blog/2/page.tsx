@@ -1,3 +1,4 @@
+import CTAButton from '@/components/CTAButton'
 import Link from 'next/link'
 import React from 'react'
 
@@ -30,12 +31,15 @@ const Post2 = () => {
                 <img src="/blog/post2.jpg" alt="post1" className='w-full rounded-xl h-auto object-cover' />
               </div>
             </div>
-            <div className='w-full mb-8 mt-5'>
+            <div className='w-full mb-8 md:mb-4 mt-5'>
               <p>
               Hoje, a certificação FSC é um diferencial importante em relação aos concorrentes.
             A tendência é se tornar cada vez mais uma exigência para permanecer no mercado.
               </p>
             </div>
+        </div>
+        <div className='text-center mb-10'>
+          <CTAButton text='Solicite um Orçamento' />
         </div>
     </main>
   )

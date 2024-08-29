@@ -1,3 +1,4 @@
+import CTAButton from '@/components/CTAButton'
 import Link from 'next/link'
 import React from 'react'
 
@@ -40,7 +41,7 @@ const Post4 = () => {
                 <img src="/blog/post4.jpg" alt="post1" className='w-full rounded-xl h-auto object-cover' />
               </div>
             </div>
-            <div className='w-full mb-8 mt-5'>
+            <div className='w-full mb-8 md:mb-4 mt-5'>
               <p>
                 De acordo com as normas do FSC, as empresas só poderão fazer uso do selo 
                 após serem aprovadas em auditoria. Esta auditoria, realizada por uma 
@@ -56,6 +57,9 @@ const Post4 = () => {
                 receber sua certificação e ter o direito de utilizar as marcas registradas do FSC.
               </p>
             </div>
+        </div>
+        <div className='text-center mb-10'>
+          <CTAButton text='Solicite um Orçamento' />
         </div>
     </main>
   )

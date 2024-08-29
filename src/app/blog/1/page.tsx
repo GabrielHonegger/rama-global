@@ -1,3 +1,4 @@
+import CTAButton from '@/components/CTAButton'
 import Link from 'next/link'
 import React from 'react'
 
@@ -22,7 +23,7 @@ const Post1 = () => {
                 <img src="/blog/post1.jpg" alt="post1" className='w-full rounded-xl h-auto object-cover' />
               </div>
             </div>
-            <div className='w-full mb-8 mt-2'>
+            <div className='w-full mb-8 md:mb-4 mt-2'>
               <p>
                 Um grupo formado por empresas e organizações sociais e ambientais do mundo todo iniciou as negociações para a criação de uma entidade independente que estabelecesse princípios universais para garantir o bom manejo florestal. Após um longo processo de consulta internacional, incluindo discussões durante a Rio-92, o FSC foi oficialmente fundado em 1993, no Canadá.
                   <br /> <br />
@@ -38,6 +39,9 @@ const Post1 = () => {
                   (Fonte: FSC Brasil)
               </p>
             </div>
+        </div>
+        <div className='text-center mb-10'>
+          <CTAButton text='Solicite um Orçamento' />
         </div>
     </main>
   )

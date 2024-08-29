@@ -1,3 +1,4 @@
+import CTAButton from '@/components/CTAButton'
 import Link from 'next/link'
 import React from 'react'
 
@@ -31,7 +32,7 @@ const Post3 = () => {
                 <img src="/blog/post3.jpg" alt="post1" className='w-full rounded-xl h-auto object-cover' />
               </div>
             </div>
-            <div className='w-full mb-8 mt-5'>
+            <div className='w-full mb-8 md:mb-4 mt-5'>
               <p>
               É necessário, entretanto, que o 
               sistema de gestão da cadeia de custódia esteja bem estruturado para identificar 
@@ -58,6 +59,9 @@ const Post3 = () => {
               A Rama Global acompanha os clientes em todas as etapas do processo de obtenção e manutenção da certificação FSC, de forma prática, rápida e eficiente.
               </p>
             </div>
+        </div>
+        <div className='text-center mb-10'>
+          <CTAButton text='Solicite um Orçamento' />
         </div>
     </main>
   )
