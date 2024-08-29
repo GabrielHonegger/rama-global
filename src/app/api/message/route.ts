@@ -1,4 +1,4 @@
-import Welcome from "@/emails/Welcome";
+import Message from "@/emails/Message";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
@@ -11,8 +11,8 @@ export async function POST(request: Request) {
         await resend.emails.send({
             from: 'onboarding@resend.dev', // ramaglobal email
             to: 'gabrielhonegger132@gmail.com', // ramaglobal email
-            subject: 'Novo Contato Rama Global',
-            react: Welcome({ name, email, message })
+            subject: 'Novo Contato - Rama Global',
+            react: Message({ name, email, message })
           });
         
         return NextResponse.json({ success: true })

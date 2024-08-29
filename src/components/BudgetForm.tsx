@@ -43,13 +43,13 @@ const formSchema = z.object({
 
     company: z.string(),
     cnpj: z.string(),
-    employeesNumber: z.number(),
+    employeesNumber: z.string(),
     address: z.string(),
     city: z.string(),
     state: z.string(),
-    branches: z.enum(['Sim', 'Não']),
-    anotherCertificate: z.enum(['Sim', 'Não']),
-    outsource: z.enum(['Sim', 'Não']),
+    branches: z.enum(['Sim', 'Não', "Sem Resposta"]),
+    anotherCertificate: z.enum(['Sim', 'Não', "Sem Resposta"]),
+    outsource: z.enum(['Sim', 'Não', "Sem Resposta"]),
     message: z.string().max(500, {
         message: "Mensagem pode conter no máximo 500 caracteres"
     })
@@ -82,42 +82,56 @@ export default function ContactForm() {
           phone: "",
           company: "",
           cnpj: "",
-          employeesNumber: 0,
+          employeesNumber: "",
           address: "",
           city: "",
           state: "",
-          branches: "Não",
-          anotherCertificate: "Não",
-          outsource: "Não",
+          branches: "Sem Resposta",
+          anotherCertificate: "Sem Resposta",
+          outsource: "Sem Resposta",
           message: ""
         },
     })
 
     const [successMessage, setSuccessMessage] = useState("");
+    
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-      const {name, email, message } = values;
+      const { name, email, phone, company, cnpj, employeesNumber, address, city, state, 
+        branches, anotherCertificate, outsource, message } = values;
 
       try {
-        await fetch('/api/emails', {
+        await fetch('/api/budget', {
           method: "POST",
           body: JSON.stringify({
-            name: name,
-            email: email,
-            message: message
+            name,
+            email,
+            phone,
+            company,
+            cnpj,
+            employeesNumber,
+            address,
+            city,
+            state,
+            branches,
+            anotherCertificate,
+            outsource,
+            message
           })
         })
         console.log(values)
-        setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
+        setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')
         form.reset()
       } catch (error) {
         console.error('Failed to submit the form', error);
+        setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
     }
 
       return (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="lg:space-y-6 space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="lg:space-y-5 space-y-8">
             {/* Nome */}
             <FormField
               control={form.control}
@@ -216,7 +230,7 @@ export default function ContactForm() {
                 <FormItem className='w-1/2 lg:w-1/3'>
                   <FormLabel className='text-md'>N° de Colaboradores</FormLabel>
                   <FormControl>
-                    <Input type='number' className='text-md' placeholder="ex: 35" {...field} />
+                    <Input className='text-md' placeholder="ex: 35" {...field} />
                   </FormControl>
                   <FormDescription>
                     
@@ -267,7 +281,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className='text-md'>Estado</FormLabel>
                   <FormControl>
-                  <Select>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Selecione um Estado" />
                     </SelectTrigger>
@@ -408,6 +422,7 @@ export default function ContactForm() {
             />
             <Button type="submit" className='border-2 md:text-lg text-md border-slate-950 font-inter rounded-full hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto md:p-6 p-5 font-thin text-white transition duration-200'>Enviar Solicitação</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
+            {errorMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-red-500'>{errorMessage}</p>}
           </form>
         </Form>
       )

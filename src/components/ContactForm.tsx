@@ -45,11 +45,13 @@ export default function ContactForm() {
 
     const [successMessage, setSuccessMessage] = useState("");
 
+    const [errorMessage, setErrorMessage] = useState("");
+    
     async function onSubmit(values: z.infer<typeof formSchema>) {
       const {name, email, message } = values;
 
       try {
-        await fetch('/api/emails', {
+        await fetch('/api/message', {
           method: "POST",
           body: JSON.stringify({
             name: name,
@@ -62,6 +64,7 @@ export default function ContactForm() {
         form.reset()
       } catch (error) {
         console.error('Failed to submit the form', error);
+        setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
     }
 
@@ -119,6 +122,7 @@ export default function ContactForm() {
             />
             <Button type="submit" className='border-2 font-light border-slate-950 md:text-md text-sm  font-inter rounded-full hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto py-[10px] text-white transition duration-200'>Enviar Mensagem</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
+            {errorMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-red-500'>{errorMessage}</p>}
           </form>
         </Form>
       )

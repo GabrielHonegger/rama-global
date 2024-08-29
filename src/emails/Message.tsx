@@ -1,13 +1,13 @@
 import { Heading, Html, Text, Img } from "@react-email/components";
 import * as React from "react";
 
-type WelcomeProps = {
+type MessageProps = {
   name: string,
   email: string,
   message: string
 }
 
-export default function Welcome({ name, email, message }: WelcomeProps) {
+export default function Message({ name, email, message }: MessageProps) {
   const CustomTextStyle = {
     fontFamily: "'Arial', sans-serif",
     fontSize: '16px',
