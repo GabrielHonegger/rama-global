@@ -13,7 +13,7 @@ export async function POST(request: Request) {
             { status: 415 } // 415 Unsupported Media Type
         );
     }
-    
+
     const { name, email, message } = await request.json()
 
     try {
@@ -31,3 +31,8 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Something went wrong." }, { status: 500 })
     }
 }
+
+export async function GET() {
+    return NextResponse.json({ message: "API is working" });
+}
+

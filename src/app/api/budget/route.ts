@@ -25,7 +25,6 @@ export async function POST(request: Request) {
             react: BudgetEmail({ name, email, phone, company, cnpj, employeesNumber, address, city, state, 
                 branches, anotherCertificate, outsource, message })
           });
-        
         return NextResponse.json({ success: true })
     } catch (error) {
         console.error(error);
@@ -33,3 +32,6 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Something went wrong." }, { status: 500 })
     }
 }
+// curl -X POST https://www.ramaglobal.com.br/api/message \
+// -H "Content-Type: application/json" \
+// -d '{"name": "Test Name", "email": "test@example.com", "message": "Test message"}'
