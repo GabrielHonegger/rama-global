@@ -10,29 +10,29 @@ const Blog = () => {
               Blog
             </h1>
             <div className='flex flex-wrap justify-around'>
-              <Link href="/">
+              <Link href="/blog/1">
                 <ThreeDCard
                   title='Como Surgiu o FSC?'
                   preview='O FSC foi criado como resposta a uma preocupação internacional com o destino das florestas mundiais no início da década de'
-                  img='blog-post1' />
+                  img='blog/post1' />
               </Link>
               <Link href="/">
                 <ThreeDCard
                   title='O Que Significa FSC?'
                   preview='O FSC segue princípios e critérios que, aplicados ao manejo florestal, garantem que os produtos originários de uma determinada'
-                  img='blog-post2' />
+                  img='blog/post2' />
               </Link>
               <Link href="/">
                 <ThreeDCard
                   title='5 Passos para a Obtenção do Selo FSC'
                   preview='Para que uma empresa possa receber a certificação FSC®, vários requisitos precisam ser observados. Elaboramos aqui uma'
-                  img='blog-post3' />
+                  img='blog/post3' />
               </Link>
               <Link href="/">
                 <ThreeDCard
                   title='Quem Pode Utilizar o Selo FSC?'
                   preview='Esta é uma das perguntas mais freqüentes que as pessoas nos fazem sobre o sistema de certificação do FSC. A dúvida surge principalmente'
-                  img='blog-post4' />
+                  img='blog/post4' />
               </Link>
             </div>
         </div>
