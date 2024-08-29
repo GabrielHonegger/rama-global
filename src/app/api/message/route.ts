@@ -5,6 +5,15 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
+    const contentType = request.headers.get("Content-Type");
+    
+    if (contentType !== "application/json") {
+        return NextResponse.json(
+            { error: "Invalid Content-Type, Expected 'application/json'" },
+            { status: 415 } // 415 Unsupported Media Type
+        );
+    }
+    
     const { name, email, message } = await request.json()
 
     try {
