@@ -9,8 +9,8 @@ export async function POST(request: Request) {
 
     try {
         await resend.emails.send({
-            from: 'onboarding@resend.dev', // ramaglobal email
-            to: 'gabrielhonegger132@gmail.com', // ramaglobal email
+            from: 'contato@ramaglobal.com.br',
+            to: 'contato@ramaglobal.com.br',
             subject: 'Novo Contato - Rama Global',
             react: Message({ name, email, message })
           });
