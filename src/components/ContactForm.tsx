@@ -53,6 +53,9 @@ export default function ContactForm() {
       try {
         await fetch('/api/message', {
           method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
             name: name,
             email: email,
