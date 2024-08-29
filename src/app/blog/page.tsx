@@ -16,19 +16,19 @@ const Blog = () => {
                   preview='O FSC foi criado como resposta a uma preocupação internacional com o destino das florestas mundiais no início da década de'
                   img='blog/post1' />
               </Link>
-              <Link href="/">
+              <Link href="/blog/2">
                 <ThreeDCard
                   title='O Que Significa FSC?'
                   preview='O FSC segue princípios e critérios que, aplicados ao manejo florestal, garantem que os produtos originários de uma determinada'
                   img='blog/post2' />
               </Link>
-              <Link href="/">
+              <Link href="/blog/3">
                 <ThreeDCard
                   title='5 Passos para a Obtenção do Selo FSC'
                   preview='Para que uma empresa possa receber a certificação FSC®, vários requisitos precisam ser observados. Elaboramos aqui uma'
                   img='blog/post3' />
               </Link>
-              <Link href="/">
+              <Link href="/blog/4">
                 <ThreeDCard
                   title='Quem Pode Utilizar o Selo FSC?'
                   preview='Esta é uma das perguntas mais freqüentes que as pessoas nos fazem sobre o sistema de certificação do FSC. A dúvida surge principalmente'
