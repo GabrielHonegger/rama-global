@@ -4,7 +4,7 @@ import ClientImage from './ClientImage'
 
 const Clients = () => {
   return (
-    <div id="clients" className="bg-slate-50 mt-10 pb-5 w-full">
+    <div id="clients" className="bg-slate-50 mt-10 lg:pb-10 pb-5 w-full">
         <Title title='Nossos Clientes' />
         <h2 className="md:text-lg sm:text-md text-center m-auto lg:text-xl text-new-green w-2/3">
           Conheça alguns de nossos clientes
@@ -25,11 +25,6 @@ const Clients = () => {
             <ClientImage cliendId='14' imgFormat='jpg' />
             <ClientImage cliendId='15' imgFormat='jpg' />
             <ClientImage cliendId='16' imgFormat='jpg' />
-        </div>
-        <div className="flex">
-          <button className="m-auto border-2 rounded-full border-orange-400 text-orange-400 px-4 py-2 mb-3 text-md hover:text-white hover:bg-orange-400 mt-2 transition duration-200">
-              Ver Mais
-          </button>
         </div>
       </div>
   )

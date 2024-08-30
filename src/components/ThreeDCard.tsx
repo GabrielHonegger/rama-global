@@ -1,9 +1,7 @@
 "use client";
  
-import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Link from "next/link";
 
 interface ThreeDCardProps {
   title: string;
@@ -29,7 +27,7 @@ const ThreeDCard: React.FC<ThreeDCardProps> = ({ title, preview, img }) => {
           {preview}... <span className="font-bold">Ver Mais</span>
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
-          <img src={`${img}.jpg`} alt={img} className="rounded-xl" />
+          <img src={`${img}`} alt={img} className="rounded-xl h-[250px] object-cover w-[425px]" />
         </CardItem>
         <div className="flex justify-end items-center mt-5">
           <CardItem

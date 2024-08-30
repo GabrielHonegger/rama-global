@@ -14,25 +14,49 @@ const Blog = () => {
                 <ThreeDCard
                   title='Como Surgiu o FSC?'
                   preview='O FSC foi criado como resposta a uma preocupação internacional com o destino das florestas mundiais no início da década de'
-                  img='blog/post1' />
+                  img='blog/post1.jpg' />
+              </Link>
+              <Link href="/blog/fsc">
+                <ThreeDCard
+                  title='Certificado FSC'
+                  preview='O Certificado FSC (Forest Stewardship Council) é uma certificação internacional criada para garantir que produtos florestais como madeira, papel e'
+                  img='blog/certificado-fsc.jpg' />
               </Link>
               <Link href="/blog/2">
                 <ThreeDCard
                   title='O Que Significa FSC?'
                   preview='O FSC segue princípios e critérios que, aplicados ao manejo florestal, garantem que os produtos originários de uma determinada'
-                  img='blog/post2' />
+                  img='blog/post2.jpg' />
+              </Link>
+              <Link href="/blog/pefc">
+                <ThreeDCard
+                  title='Certificado PEFC'
+                  preview='O Certificado PEFC (Programme for the Endorsement of Forest Certification) é uma certificação internacional dedicada a promover a'
+                  img='blog/certificado-pefc.webp' />
               </Link>
               <Link href="/blog/3">
                 <ThreeDCard
                   title='5 Passos para a Obtenção do Selo FSC'
                   preview='Para que uma empresa possa receber a certificação FSC®, vários requisitos precisam ser observados. Elaboramos aqui uma'
-                  img='blog/post3' />
+                  img='blog/post3.jpg' />
+              </Link>
+              <Link href="/blog/esg">
+                <ThreeDCard
+                  title='Certificado ESG'
+                  preview='O Certificado ESG (Environmental, Social and Governance) refere-se a um conjunto de práticas e métricas que avaliam a'
+                  img='blog/certificado-esg.jpg' />
               </Link>
               <Link href="/blog/4">
                 <ThreeDCard
                   title='Quem Pode Utilizar o Selo FSC?'
                   preview='Esta é uma das perguntas mais freqüentes que as pessoas nos fazem sobre o sistema de certificação do FSC. A dúvida surge principalmente'
-                  img='blog/post4' />
+                  img='blog/post4.jpg' />
+              </Link>
+              <Link href="/blog/rotulo-ecologico">
+                <ThreeDCard
+                  title='Certificado de Rótulo Ecológico'
+                  preview='A Certificação de Rótulo Ecológico é uma certificação que indica que um produto foi produzido de maneira ambientalmente'
+                  img='blog/certificado-rotulo-ecologico.jpeg' />
               </Link>
             </div>
         </div>

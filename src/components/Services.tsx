@@ -12,6 +12,7 @@ const Services = () => {
                 title='Certificação FSC'
                 description='A certificação FSC melhora a reputação de sua empresa, abre acesso a mercados conscientes, cumpre regulações ambientais e atrai consumidores que valorizam a sustentabilidade.'
                 imgSrc='fsc-logo.png'
+                certificate='fsc'
             />
             <CertificationBox 
                 title='Certificação PEFC'
@@ -19,6 +20,7 @@ const Services = () => {
                 facilita acesso a mercados que exigem sustentabilidade e atrai consumidores preocupados 
                 com o meio ambiente.'
                 imgSrc='pefc-logo.png'
+                certificate='pefc'
             />
             <CertificationBox 
                 title='Certificação ESG'
@@ -27,6 +29,7 @@ const Services = () => {
                 considerando seu impacto ambiental, responsabilidade social e práticas de gerenciamento 
                 transparentes e justas.'
                 imgSrc='esg-logo.png'
+                certificate='esg'
             />
             <CertificationBox 
                 title='Certificação de Rótulo Ecológico'
@@ -34,9 +37,10 @@ const Services = () => {
                 melhora a imagem da marca e abre mercados sustentáveis, atraindo consumidores que 
                 buscam opções ecológicas e ajudando-os a escolher produtos menos nocivos ao meio ambiente.'
                 imgSrc='rotulo-ecologico-logo.png'
+                certificate='rotulo-ecologico'
             />
         </div>
-        <div className='m-auto text-center mt-8 pb-5'>
+        <div className='m-auto text-center pb-5'>
           <CTAButton text='Começar Agora' />
         </div>
       </div>
