@@ -371,7 +371,11 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className='text-md'>Deseja certificar filiais?</FormLabel>
                   <FormControl>
-                    <RadioGroup className='flex space-x-4'>
+                    <RadioGroup 
+                      className='flex space-x-4'
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="Sim" id="r2" />
                         <Label htmlFor="r2">Sim</Label>
@@ -397,7 +401,11 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className='text-md'>Possui alguma outra certificação?</FormLabel>
                   <FormControl>
-                    <RadioGroup className='flex space-x-4'>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex space-x-4"
+                    >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="Sim" id="r2" />
                         <Label htmlFor="r2">Sim</Label>
@@ -423,7 +431,11 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className='text-md'>Terceiriza alguma etapa da produção?</FormLabel>
                   <FormControl>
-                    <RadioGroup className='flex space-x-4'>
+                    <RadioGroup 
+                      className='flex space-x-4'
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="Sim" id="r2" />
                         <Label htmlFor="r2">Sim</Label>
