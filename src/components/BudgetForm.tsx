@@ -40,7 +40,7 @@ const formSchema = z.object({
         
     phone: z.string()
         .min(1, { message: "Telefone é obrigatório" }),
-
+    certificate: z.enum(['FSC', 'PEFC', "ESG", "Rótulo Ecológico", "Mais de Um Certificado", "Não Sei", ""]),
     company: z.string(),
     cnpj: z.string(),
     employeesNumber: z.string(),
@@ -80,6 +80,7 @@ export default function ContactForm() {
           name: "",
           email: "",
           phone: "",
+          certificate: "",
           company: "",
           cnpj: "",
           employeesNumber: "",
@@ -98,7 +99,7 @@ export default function ContactForm() {
     const [errorMessage, setErrorMessage] = useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-      const { name, email, phone, company, cnpj, employeesNumber, address, city, state, 
+      const { name, email, phone, certificate,company, cnpj, employeesNumber, address, city, state, 
         branches, anotherCertificate, outsource, message } = values;
 
       try {
@@ -111,6 +112,7 @@ export default function ContactForm() {
             name,
             email,
             phone,
+            certificate,
             company,
             cnpj,
             employeesNumber,
@@ -187,7 +189,39 @@ export default function ContactForm() {
                 <FormMessage />
               </FormItem>
             )}
-        />
+            />
+            {/* Certificado */}
+            <FormField
+              control={form.control}
+              name="certificate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className='text-md'>Escolha o Certificado Desejado:</FormLabel>
+                  <FormControl>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <SelectTrigger className="w-[300px]">
+                      <SelectValue placeholder="Selecione um Certificado" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Certificados</SelectLabel>
+                        <SelectItem value="FSC">FSC</SelectItem>
+                        <SelectItem value="PEFC">PEFC</SelectItem>
+                        <SelectItem value="ESG">ESG</SelectItem>
+                        <SelectItem value="Rotulo-Ecologico">Rótulo Ecológico</SelectItem>
+                        <SelectItem value="Mais-de-Um">Mais de Um Certificado</SelectItem>
+                        <SelectItem value="Nao-Sei">Não Sei</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  </FormControl>
+                  <FormDescription>
+                    
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             {/* Empresa */}
             <FormField
               control={form.control}

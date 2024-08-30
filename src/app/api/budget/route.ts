@@ -14,7 +14,7 @@ export async function POST(request: Request) {
         );
     }
 
-    const { name, email, phone, company, cnpj, employeesNumber, address, city, state, 
+    const { name, email, phone, certificate, company, cnpj, employeesNumber, address, city, state, 
         branches, anotherCertificate, outsource, message } = await request.json()
 
     try {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
             from: 'contato@ramaglobal.com.br',
             to: 'contato@ramaglobal.com.br',
             subject: 'Nova Solicitação de Orçamento - Rama Global',
-            react: BudgetEmail({ name, email, phone, company, cnpj, employeesNumber, address, city, state, 
+            react: BudgetEmail({ name, email, phone, certificate, company, cnpj, employeesNumber, address, city, state, 
                 branches, anotherCertificate, outsource, message })
           });
         return NextResponse.json({ success: true })

@@ -5,6 +5,7 @@ type BudgetEmailProps = {
   name: string,
   email: string,
   phone: string,
+  certificate: string,
   company: string,
   cnpj: string,
   employeesNumber: string,
@@ -17,7 +18,7 @@ type BudgetEmailProps = {
   message: string
 }
 
-export default function BudgetEmail({ name, email, phone, company, cnpj, employeesNumber, address, city, state, 
+export default function BudgetEmail({ name, email, phone, certificate, company, cnpj, employeesNumber, address, city, state, 
   branches, anotherCertificate, outsource, message
 }: BudgetEmailProps) {
   const CustomTextStyle = {
@@ -43,6 +44,7 @@ export default function BudgetEmail({ name, email, phone, company, cnpj, employe
       <Text style={CustomTextStyle}><b>Nome</b>: {name}</Text>
       <Text style={CustomTextStyle}><b>Email</b>: {email}</Text>
       <Text style={CustomTextStyle}><b>Telefone</b>: {phone}</Text>
+      { certificate && <Text style={CustomTextStyle}><b>Certificado</b>: {certificate}</Text> }
       { company && <Text style={CustomTextStyle}><b>Nome da Empresa</b>: {company}</Text> }
       { cnpj && <Text style={CustomTextStyle}><b>CNPJ</b>: {cnpj}</Text> }
       { employeesNumber && <Text style={CustomTextStyle}><b>Número de Funcionários</b>: {employeesNumber}</Text> }
