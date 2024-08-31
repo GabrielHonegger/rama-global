@@ -131,14 +131,7 @@ export default function ContactForm() {
         console.log(values)
         setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')
 
-        const currentPath = '/solicitar-orcamento';
-
-        const newQuery = new URLSearchParams({
-          status: 'envidado'
-        }).toString();
-
-        const newPath = `${currentPath}?${newQuery}`;
-        router.push(newPath);
+        router.push(`/solicitar-orcamento?status=enviado`);
 
         form.reset()
       } catch (error) {

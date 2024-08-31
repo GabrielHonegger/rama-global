@@ -68,14 +68,7 @@ export default function ContactForm() {
         console.log(values)
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
         
-        const currentPath = '/'
-
-        const newQuery = new URLSearchParams({
-          status: 'enviado'
-        }).toString();
-
-        const newPath = `${currentPath}?${newQuery}`;
-        router.push(newPath);
+        router.push(`/#contact?status=enviado`);
 
         form.reset()
       } catch (error) {

@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Whatsapp from "@/components/Whatsapp";
-import { GoogleTagManager } from '@next/third-parties/google'
 
 const corben = Corben({ 
   weight: ["400"], 
@@ -34,7 +33,6 @@ export default function RootLayout({
       <link rel="icon" href="/icon.ico"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <GoogleTagManager gtmId="GTM-PZ6F6P4J" />
       <body className={corben.className}>
         <NavBar />
         {children}
