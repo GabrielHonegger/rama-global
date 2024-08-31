@@ -26,6 +26,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { useRouter } from 'next/navigation'
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
@@ -74,6 +75,8 @@ function formatCNPJ(value: string): string {
 }
 
 export default function ContactForm() {
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -127,6 +130,16 @@ export default function ContactForm() {
         })
         console.log(values)
         setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')
+
+        const currentPath = '/solicitar-orcamento';
+
+        const newQuery = new URLSearchParams({
+          status: 'envidado'
+        }).toString();
+
+        const newPath = `${currentPath}?${newQuery}`;
+        router.push(newPath);
+
         form.reset()
       } catch (error) {
         console.error('Failed to submit the form', error);

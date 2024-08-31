@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useRouter } from 'next/navigation'
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -34,6 +35,8 @@ const formSchema = z.object({
   })
 
 export default function ContactForm() {
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -64,6 +67,16 @@ export default function ContactForm() {
         })
         console.log(values)
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
+        
+        const currentPath = '/'
+
+        const newQuery = new URLSearchParams({
+          status: 'enviado'
+        }).toString();
+
+        const newPath = `${currentPath}?${newQuery}`;
+        router.push(newPath);
+
         form.reset()
       } catch (error) {
         console.error('Failed to submit the form', error);
