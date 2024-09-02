@@ -62,12 +62,10 @@ export default function ContactForm() {
             message: message
           })
         })
-        console.log(values)
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
 
         form.reset()
       } catch (error) {
-        console.error('Failed to submit the form', error);
         setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
     }
