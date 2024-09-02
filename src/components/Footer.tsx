@@ -12,6 +12,10 @@ const Footer = () => {
             <li><Link href="/blog">Blog</Link></li>
             <li><Link href="/#contact">Contato</Link></li>
         </ul>
+        <ul className="flex space-x-8 text-white md:text-md text-sm">
+            <li><Link href="/politica-de-privacidade">Política de Privacidade</Link></li>
+            <li><Link href="/termos-de-uso">Termos de Uso</Link></li>
+        </ul>
         <p className='text-white text-center text-sm md:text-md'>
             Direitos autorais © 2024 Rama Global. Todos os direitos reservados.
         </p>
