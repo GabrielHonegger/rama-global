@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
+import DOMPurify from 'dompurify';
 import {
   Form,
   FormControl,
@@ -57,9 +58,9 @@ export default function ContactForm() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            name: name,
-            email: email,
-            message: message
+            name: DOMPurify.sanitize(name),
+            email: DOMPurify.sanitize(email),
+            message: DOMPurify.sanitize(message)
           })
         })
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')

@@ -7,6 +7,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import DOMPurify from 'dompurify';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   Select,
@@ -109,20 +110,20 @@ export default function ContactForm() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            name,
-            email,
-            phone,
-            certificate,
-            company,
-            cnpj,
-            employeesNumber,
-            address,
-            city,
-            state,
-            branches,
-            anotherCertificate,
-            outsource,
-            message
+            name: DOMPurify.sanitize(name),
+            email: DOMPurify.sanitize(email),
+            phone: DOMPurify.sanitize(phone),
+            certificate: DOMPurify.sanitize(certificate),
+            company: DOMPurify.sanitize(company),
+            cnpj: DOMPurify.sanitize(cnpj),
+            employeesNumber: DOMPurify.sanitize(employeesNumber),
+            address: DOMPurify.sanitize(address),
+            city: DOMPurify.sanitize(city),
+            state: DOMPurify.sanitize(state),
+            branches: DOMPurify.sanitize(branches),
+            anotherCertificate: DOMPurify.sanitize(anotherCertificate),
+            outsource: DOMPurify.sanitize(outsource),
+            message: DOMPurify.sanitize(message)
           })
         })
         setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')
