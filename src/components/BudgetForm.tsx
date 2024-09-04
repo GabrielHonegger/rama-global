@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -53,7 +53,8 @@ const formSchema = z.object({
     outsource: z.enum(['Sim', 'Não', "Sem Resposta"]),
     message: z.string().max(500, {
         message: "Mensagem pode conter no máximo 500 caracteres"
-    })
+    }),
+    csrfToken: z.string(),
   })
 
 function formatPhoneNumber(value: string): string {
@@ -91,13 +92,25 @@ export default function ContactForm() {
           branches: "Sem Resposta",
           anotherCertificate: "Sem Resposta",
           outsource: "Sem Resposta",
-          message: ""
+          message: "",
         },
     })
 
     const [successMessage, setSuccessMessage] = useState("");
     
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [csrfToken, setCsrfToken] = useState("");
+
+    useEffect(() => {
+      const fetchCsrfToken = async () => {
+          const response = await fetch("/api/csrf-token");
+          const data = await response.json();
+          setCsrfToken(data.csrfToken);
+      };
+
+      fetchCsrfToken();
+  }, []);
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
       const { name, email, phone, certificate,company, cnpj, employeesNumber, address, city, state, 
@@ -123,7 +136,8 @@ export default function ContactForm() {
             branches: DOMPurify.sanitize(branches),
             anotherCertificate: DOMPurify.sanitize(anotherCertificate),
             outsource: DOMPurify.sanitize(outsource),
-            message: DOMPurify.sanitize(message)
+            message: DOMPurify.sanitize(message),
+            csrfToken: csrfToken,
           })
         })
         setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')

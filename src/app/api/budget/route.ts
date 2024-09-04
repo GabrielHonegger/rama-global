@@ -32,7 +32,8 @@ const formSchema = z.object({
     outsource: z.enum(['Sim', 'Não', "Sem Resposta"]),
     message: z.string().max(500, {
         message: "Mensagem pode conter no máximo 500 caracteres"
-    })
+    }),
+    csrfToken: z.string(),
   })
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -54,6 +55,13 @@ export async function POST(request: Request) {
 
     try {
         const requestBody = await request.json();
+
+        const cookies = request.headers.get('cookie') || '';
+        const csrfTokenCookie = cookies.split('; ').find(row => row.startsWith('csrfToken='))?.split('=')[1];
+
+        if (!csrfTokenCookie || csrfTokenCookie !== requestBody.csrfToken) {
+            return NextResponse.json({ error: 'Invalid CSRF token' }, { status: 403 });
+        }
 
         const validatedData = formSchema.parse(requestBody);
 

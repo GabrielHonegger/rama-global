@@ -5,7 +5,7 @@ import { z } from "zod";
 import DOMPurify from "dompurify";
 import { JSDOM } from "jsdom";
 
-// Setup DOMPurify to work in Node.js
+
 const { window } = new JSDOM("");
 const purify = DOMPurify(window);
 
@@ -13,6 +13,7 @@ const formSchema = z.object({
     name: z.string().min(2).max(30),
     email: z.string().email(),
     message: z.string().min(3).max(500),
+    csrfToken: z.string(),
   });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -35,6 +36,13 @@ export async function POST(request: Request) {
     try {
         const requestBody = await request.json();
 
+        const cookies = request.headers.get('cookie') || '';
+        const csrfTokenCookie = cookies.split('; ').find(row => row.startsWith('csrfToken='))?.split('=')[1];
+
+        if (!csrfTokenCookie || csrfTokenCookie !== requestBody.csrfToken) {
+            return NextResponse.json({ error: 'Invalid CSRF token' }, { status: 403 });
+        }
+
         const validatedData = formSchema.parse(requestBody)
 
         const sanitizedData = {
@@ -45,7 +53,7 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
             from: 'contato@ramaglobal.com.br',
-            to: 'contato@ramaglobal.com.br',
+            to: 'gabrielhonegger132@gmail.com',
             subject: 'Novo Contato - Rama Global',
             react: Message(sanitizedData)
           });

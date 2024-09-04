@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -31,7 +31,8 @@ const formSchema = z.object({
         message: "Digite sua mensagem"
     }).max(500, {
         message: "Mensagem pode conter no máximo 500 caracteres"
-    })
+    }),
+    csrfToken: z.string(),
   })
 
 export default function ContactForm() {
@@ -47,12 +48,24 @@ export default function ContactForm() {
     const [successMessage, setSuccessMessage] = useState("");
 
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [csrfToken, setCsrfToken] = useState("");
+
+    useEffect(() => {
+      const fetchCsrfToken = async () => {
+          const response = await fetch("/api/csrf-token");
+          const data = await response.json();
+          setCsrfToken(data.csrfToken);
+      };
+
+      fetchCsrfToken();
+  }, []);
     
     async function onSubmit(values: z.infer<typeof formSchema>) {
       const {name, email, message } = values;
 
       try {
-        await fetch('/api/message', {
+        const response = await fetch('/api/message', {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -60,13 +73,21 @@ export default function ContactForm() {
           body: JSON.stringify({
             name: DOMPurify.sanitize(name),
             email: DOMPurify.sanitize(email),
-            message: DOMPurify.sanitize(message)
+            message: DOMPurify.sanitize(message),
+            csrfToken: csrfToken,
           })
         })
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Error while sending message:', errorData);
+          throw new Error('Server responded with an error.');
+      }
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
 
         form.reset()
       } catch (error) {
+        console.error(error);
         setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
     }
