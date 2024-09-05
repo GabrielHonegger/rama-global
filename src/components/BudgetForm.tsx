@@ -28,6 +28,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const formSchema = z.object({
     name: z.string()
@@ -41,7 +42,7 @@ const formSchema = z.object({
         
     phone: z.string()
         .min(1, { message: "Telefone é obrigatório" }),
-    certificate: z.enum(['FSC', 'PEFC', "ESG", "Rótulo Ecológico", "Mais de Um Certificado", "Não Sei", ""]),
+    certificate: z.enum(['FSC', 'PEFC', "ESG", "Rotulo-Ecologico", "Mais-de-Um", "Nao-Sei", ""]),
     company: z.string(),
     cnpj: z.string(),
     employeesNumber: z.string(),
@@ -55,6 +56,7 @@ const formSchema = z.object({
         message: "Mensagem pode conter no máximo 500 caracteres"
     }),
     csrfToken: z.string(),
+    captcha: z.string(),
   })
 
 function formatPhoneNumber(value: string): string {
@@ -93,12 +95,16 @@ export default function ContactForm() {
           anotherCertificate: "Sem Resposta",
           outsource: "Sem Resposta",
           message: "",
+          csrfToken: "",
+          captcha: "",
         },
     })
 
     const [successMessage, setSuccessMessage] = useState("");
     
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [captcha, setCaptcha] = useState<string | null>(null);
 
     const [csrfToken, setCsrfToken] = useState("");
 
@@ -116,8 +122,13 @@ export default function ContactForm() {
       const { name, email, phone, certificate,company, cnpj, employeesNumber, address, city, state, 
         branches, anotherCertificate, outsource, message } = values;
 
+        if (!captcha) {
+          setErrorMessage('Por favor, complete o reCAPTCHA.');
+          return;
+        }
+
       try {
-        await fetch('/api/budget', {
+        const response = await fetch('/api/budget', {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -138,11 +149,21 @@ export default function ContactForm() {
             outsource: DOMPurify.sanitize(outsource),
             message: DOMPurify.sanitize(message),
             csrfToken: csrfToken,
+            captcha,
           })
         })
-        setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.')
 
-        form.reset()
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Error while sending message:', errorData);
+          throw new Error('Server responded with an error.');
+        }
+
+        setErrorMessage('');
+        setSuccessMessage('Solicitação enviada com sucesso! Você receberá um retorno o mais breve possível.');
+
+        form.reset();
+        setCaptcha(null);
       } catch (error) {
         setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
@@ -483,6 +504,7 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} onChange={(token) => setCaptcha(token)} />
             <Button type="submit" className='border-2 md:text-lg text-md border-slate-950 font-inter rounded-full hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto md:p-6 p-5 font-thin text-white transition duration-200'>Enviar Solicitação</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
             {errorMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-red-500'>{errorMessage}</p>}

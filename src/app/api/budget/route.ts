@@ -8,6 +8,10 @@ import { JSDOM } from "jsdom";
 const { window } = new JSDOM("");
 const purify = DOMPurify(window);
 
+const allowedOrigin = process.env.NODE_ENV === 'production'
+  ? 'https://ramaglobal.com.br'
+  : '*';
+
 const formSchema = z.object({
     name: z.string()
         .min(1, { message: "Nome é obrigatório" })
@@ -20,7 +24,7 @@ const formSchema = z.object({
         
     phone: z.string()
         .min(1, { message: "Telefone é obrigatório" }),
-    certificate: z.enum(['FSC', 'PEFC', "ESG", "Rótulo Ecológico", "Mais de Um Certificado", "Não Sei", ""]),
+    certificate: z.enum(['FSC', 'PEFC', "ESG", "Rotulo-Ecologico", "Mais-de-Um", "Nao-Sei", ""]),
     company: z.string(),
     cnpj: z.string(),
     employeesNumber: z.string(),
@@ -34,6 +38,7 @@ const formSchema = z.object({
         message: "Mensagem pode conter no máximo 500 caracteres"
     }),
     csrfToken: z.string(),
+    captcha: z.string(),
   })
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -42,7 +47,7 @@ export async function POST(request: Request) {
     const contentType = request.headers.get("Content-Type");
 
     const responseHeaders = new Headers();
-    responseHeaders.set('Access-Control-Allow-Origin', 'https://ramaglobal.com.br');
+    responseHeaders.set('Access-Control-Allow-Origin', allowedOrigin);
     responseHeaders.set('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Allowed methods
     responseHeaders.set('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
         
@@ -65,6 +70,27 @@ export async function POST(request: Request) {
 
         const validatedData = formSchema.parse(requestBody);
 
+        if (!validatedData.captcha) {
+            return NextResponse.json(
+                { error: 'Unprocessable request, please provide the required fields'},
+                { status: 422 })
+        }
+
+        const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?
+        secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${validatedData.captcha}`,
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+            },
+            method: "POST",
+        })
+
+        if (!response.ok) {
+            return NextResponse.json(
+                { error: 'Unprocessable request, invalid captcha token'},
+                { status: 422 })
+        }
+
         const sanitizedData = {
             name: purify.sanitize(validatedData.name),
             email: purify.sanitize(validatedData.email),
@@ -84,7 +110,7 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
             from: 'contato@ramaglobal.com.br',
-            to: 'contato@ramaglobal.com.br',
+            to: 'gabrielhonegger132@gmail.com',
             subject: 'Nova Solicitação de Orçamento - Rama Global',
             react: BudgetEmail(sanitizedData)
           });
@@ -110,7 +136,7 @@ export async function POST(request: Request) {
 
 export async function OPTIONS(request: Request) {
     const response = new Response(null, { status: 200 });
-    response.headers.set('Access-Control-Allow-Origin', 'https://ramaglobal.com.br');
+    response.headers.set('Access-Control-Allow-Origin', allowedOrigin);
     response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
     response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     return response;

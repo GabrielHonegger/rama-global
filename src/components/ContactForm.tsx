@@ -96,7 +96,9 @@ export default function ContactForm() {
           console.error('Error while sending message:', errorData);
           throw new Error('Server responded with an error.');
       }
-        setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
+
+        setErrorMessage('');
+        setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.');
 
         form.reset();
         setCaptcha(null);
