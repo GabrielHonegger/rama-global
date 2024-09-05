@@ -9,11 +9,16 @@ import { JSDOM } from "jsdom";
 const { window } = new JSDOM("");
 const purify = DOMPurify(window);
 
+const allowedOrigin = process.env.NODE_ENV === 'production'
+  ? 'https://ramaglobal.com.br'
+  : '*';
+
 const formSchema = z.object({
     name: z.string().min(2).max(30),
     email: z.string().email(),
     message: z.string().min(3).max(500),
     csrfToken: z.string(),
+    captcha: z.string()
   });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -22,7 +27,7 @@ export async function POST(request: Request) {
     const contentType = request.headers.get("Content-Type");
 
     const responseHeaders = new Headers();
-    responseHeaders.set('Access-Control-Allow-Origin', 'https://ramaglobal.com.br');
+    responseHeaders.set('Access-Control-Allow-Origin', allowedOrigin);
     responseHeaders.set('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Allowed methods
     responseHeaders.set('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
     
@@ -43,7 +48,28 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Invalid CSRF token' }, { status: 403 });
         }
 
-        const validatedData = formSchema.parse(requestBody)
+        const validatedData = formSchema.parse(requestBody);
+
+        if (!validatedData.captcha) {
+            return NextResponse.json(
+                { error: 'Unprocessable request, please provide the required fields'},
+                { status: 422 })
+        }
+
+        const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?
+        secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${validatedData.captcha}`,
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+            },
+            method: "POST",
+        })
+
+        if (!response.ok) {
+            return NextResponse.json(
+                { error: 'Unprocessable request, invalid captcha token'},
+                { status: 422 })
+        }
 
         const sanitizedData = {
             name: purify.sanitize(validatedData.name),
@@ -77,7 +103,7 @@ export async function POST(request: Request) {
 
 export async function OPTIONS(request: Request) {
     const response = new Response(null, { status: 200 });
-    response.headers.set('Access-Control-Allow-Origin', 'https://ramaglobal.com.br');
+    response.headers.set('Access-Control-Allow-Origin', allowedOrigin);
     response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
     response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     return response;

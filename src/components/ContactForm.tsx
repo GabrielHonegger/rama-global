@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -33,6 +34,7 @@ const formSchema = z.object({
         message: "Mensagem pode conter no máximo 500 caracteres"
     }),
     csrfToken: z.string(),
+    captcha: z.string(),
   })
 
 export default function ContactForm() {
@@ -41,13 +43,17 @@ export default function ContactForm() {
         defaultValues: {
           name: "",
           email: "",
-          message: ""
+          message: "",
+          csrfToken: "",
+          captcha: "",
         },
     })
 
     const [successMessage, setSuccessMessage] = useState("");
 
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [captcha, setCaptcha] = useState<string | null>(null);
 
     const [csrfToken, setCsrfToken] = useState("");
 
@@ -62,7 +68,13 @@ export default function ContactForm() {
   }, []);
     
     async function onSubmit(values: z.infer<typeof formSchema>) {
+
       const {name, email, message } = values;
+
+      if (!captcha) {
+        setErrorMessage('Por favor, complete o reCAPTCHA.');
+        return;
+      }
 
       try {
         const response = await fetch('/api/message', {
@@ -75,6 +87,7 @@ export default function ContactForm() {
             email: DOMPurify.sanitize(email),
             message: DOMPurify.sanitize(message),
             csrfToken: csrfToken,
+            captcha,
           })
         })
 
@@ -85,7 +98,8 @@ export default function ContactForm() {
       }
         setSuccessMessage('Mensagem enviada com sucesso! Você receberá uma resposta o mais breve possível.')
 
-        form.reset()
+        form.reset();
+        setCaptcha(null);
       } catch (error) {
         console.error(error);
         setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
@@ -144,6 +158,7 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} onChange={(token) => setCaptcha(token)} />
             <Button type="submit" className='border-2 font-light border-slate-950 md:text-md text-sm  font-inter rounded-full hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto py-[10px] text-white transition duration-200'>Enviar Mensagem</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
             {errorMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-red-500'>{errorMessage}</p>}
