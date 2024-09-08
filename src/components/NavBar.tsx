@@ -48,12 +48,12 @@ const NavBar = () => {
         <div className={`w-3/4 border-l border-gray-800 bg-white pt-14 top-0 right-0 bottom-0 z-10 h-screen fixed flex-col items-center ${isOpen ? "flex" : "hidden"} lg:hidden`}>
             <div className="flex flex-col min-w-full items-center justify-center">
                 <ul className="flex flex-col items-center space-y-12 text-lg mt-4">
-                    <li><a href="#hero">Início</a></li>
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#about">Quem Somos</a></li>
-                    <li><a href="#clients">Clientes</a></li>
+                    <li><a href="/#hero">Início</a></li>
+                    <li><a href="/#services">Serviços</a></li>
+                    <li><a href="/#about">Quem Somos</a></li>
+                    <li><a href="/#clients">Clientes</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="/#contact">Contato</a></li>
                 </ul>
             </div>
             <div className="flex items-center justify-center mt-8">
