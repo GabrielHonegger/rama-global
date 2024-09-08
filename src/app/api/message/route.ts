@@ -10,7 +10,7 @@ const { window } = new JSDOM("");
 const purify = DOMPurify(window);
 
 const allowedOrigin = process.env.NODE_ENV === 'production'
-  ? 'https://ramaglobal.com.br'
+  ? 'https://ramaglobal.company'
   : '*';
 
 const formSchema = z.object({
