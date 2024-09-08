@@ -110,7 +110,7 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
             from: 'contato@ramaglobal.com.br',
-            to: 'gabrielhonegger132@gmail.com',
+            to: 'contato@ramaglobal.company',
             subject: 'Nova Solicitação de Orçamento - Rama Global',
             react: BudgetEmail(sanitizedData)
           });

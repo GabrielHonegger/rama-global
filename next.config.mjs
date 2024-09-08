@@ -18,7 +18,7 @@ const nextConfig = {
               font-src 'self';
               frame-src 'self' https://www.google.com;
               frame-ancestors 'none'; 
-              object-src 'none';`
+              object-src 'none';` 
               .replace(/\s{2,}/g, ' ').trim(),
             },
             {
@@ -39,7 +39,7 @@ const nextConfig = {
             },
             {
               key: 'Permissions-Policy',
-              value: '*',
+              value: 'geolocation=(), camera=(), microphone=(), payment=()',
             },
             {
               key: 'Strict-Transport-Security',

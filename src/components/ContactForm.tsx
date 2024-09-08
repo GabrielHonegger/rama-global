@@ -57,6 +57,12 @@ export default function ContactForm() {
 
     const [csrfToken, setCsrfToken] = useState("");
 
+    const [showCaptcha, setShowCaptcha] = useState(false);
+
+    const handleInputChange = () => {
+        setShowCaptcha(true); // Shows reCAPTCHA when the user starts typing
+    };
+
     useEffect(() => {
       const fetchCsrfToken = async () => {
           const response = await fetch("/api/csrf-token");
@@ -110,7 +116,7 @@ export default function ContactForm() {
 
       return (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="lg:space-y-6 space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} onChange={handleInputChange} className="lg:space-y-6 space-y-4">
             <FormField
               control={form.control}
               name="name"
@@ -160,7 +166,9 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
-            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} onChange={(token) => setCaptcha(token)} />
+            {showCaptcha && (
+                <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} onChange={(token) => setCaptcha(token)} />
+            )}
             <Button type="submit" className='border-2 font-light border-slate-950 md:text-md text-sm  font-inter rounded-full hover:bg-white hover:text-slate-950 bg-slate-950 ml-auto py-[10px] text-white transition duration-200'>Enviar Mensagem</Button>
             {successMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-green-600'>{successMessage}</p>}
             {errorMessage && <p  style={{ marginTop: '5px', marginBlockStart: '0 !important' }} className='text-red-500'>{errorMessage}</p>}
