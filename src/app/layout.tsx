@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Whatsapp from "@/components/Whatsapp";
+import CookieConsent from "@/components/CookieConsent";
 
 const corben = Corben({ 
   weight: ["400"], 
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
+        <CookieConsent />
       </body>
     </html>
   );
