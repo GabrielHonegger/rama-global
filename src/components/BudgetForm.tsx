@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import DOMPurify from 'dompurify';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useRouter } from 'next/navigation';
 import {
   Select,
   SelectContent,
@@ -40,8 +41,7 @@ const formSchema = z.object({
         .min(1, { message: "Email é obrigatório" })
         .email({ message: "Insira um email válido" }),
         
-    phone: z.string()
-        .min(1, { message: "Telefone é obrigatório" }),
+    phone: z.string(),
     certificate: z.enum(['FSC', 'PEFC', "ESG", "Rotulo-Ecologico", "Mais-de-Um", "Nao-Sei", ""]),
     company: z.string(),
     cnpj: z.string(),
@@ -77,7 +77,8 @@ function formatCNPJ(value: string): string {
   return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8, 12)}-${cnpj.slice(12, 14)}`;
 }
 
-export default function ContactForm() {
+export default function BudgetForm() {
+  const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -170,6 +171,8 @@ export default function ContactForm() {
 
         form.reset();
         setCaptcha(null);
+
+        router.push('/solicitacao-enviada');
       } catch (error) {
         setErrorMessage('Ocorreu um erro ao enviar a solicitação.');
       }
@@ -184,7 +187,7 @@ export default function ContactForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-md'>Nome</FormLabel>
+                  <FormLabel className='text-md'>Nome *</FormLabel>
                   <FormControl>
                     <Input className='text-md py-3' placeholder='ex: Felipe' {...field} />
                   </FormControl>
@@ -201,7 +204,7 @@ export default function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-md'>Email</FormLabel>
+                  <FormLabel className='text-md'>Email *</FormLabel>
                   <FormControl>
                     <Input className='text-md' placeholder="ex: felipe@exemplo.com" {...field} />
                   </FormControl>
