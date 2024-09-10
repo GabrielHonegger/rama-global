@@ -22,8 +22,7 @@ const formSchema = z.object({
         .min(1, { message: "Email é obrigatório" })
         .email({ message: "Insira um email válido" }),
         
-    phone: z.string()
-        .min(1, { message: "Telefone é obrigatório" }),
+    phone: z.string(),
     certificate: z.enum(['FSC', 'PEFC', "ESG", "Rotulo-Ecologico", "Mais-de-Um", "Nao-Sei", ""]),
     company: z.string(),
     cnpj: z.string(),
