@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const QuoteSent = () => {
   return (
@@ -12,6 +13,7 @@ const QuoteSent = () => {
               Você receberá uma resposta em breve.
             </h2>
         </div>
+        <GoogleTagManager gtmId="GTM-MDN8VD27" />
     </main>
   )
 }

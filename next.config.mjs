@@ -11,9 +11,9 @@ const nextConfig = {
               key: 'Content-Security-Policy',
               value: `
               default-src 'self'; 
-              script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://www.google.com https://www.gstatic.com; 
+              script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://www.google.com https://www.gstatic.com https://www.googletagmanager.com; 
               style-src 'self' 'unsafe-inline'; 
-              img-src 'self' data:; 
+              img-src 'self' data: https://www.googletagmanager.com; 
               connect-src 'self'; 
               font-src 'self';
               frame-src 'self' https://www.google.com;
