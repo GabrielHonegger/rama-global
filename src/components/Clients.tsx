@@ -1,6 +1,8 @@
 import React from 'react'
 import Title from './Title'
 import ClientImage from './ClientImage'
+import Button from './Button'
+import Link from 'next/link'
 
 const Clients = () => {
   return (
@@ -26,6 +28,13 @@ const Clients = () => {
             <ClientImage cliendId='15' imgFormat='jpg' />
             <ClientImage cliendId='16' imgFormat='jpg' />
         </div>
+        <div className="flex justify-center items-center mt-5">
+                <Link href='/clientes'>
+                  <Button
+                      text='Ver Todos' 
+                  />
+                </Link>
+            </div>
       </div>
   )
 }
