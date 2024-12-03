@@ -6,15 +6,15 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Whatsapp from "@/components/Whatsapp";
 import CookieConsent from "@/components/CookieConsent";
+import { GoogleTagManager } from "@next/third-parties/google";
 
-const corben = Corben({ 
-  weight: ["400"], 
+const corben = Corben({
+  weight: ["400"],
   subsets: ["latin"],
-  variable: '--font-corben'
+  variable: "--font-corben",
 });
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export const metadata: Metadata = {
   title: "Rama Global",
@@ -29,8 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/icon.ico"/>
+        <link rel="icon" href="/icon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <GoogleTagManager gtmId="GTM-MDN8VD27" />
       </head>
       <body suppressHydrationWarning={true} className={corben.className}>
         <NavBar />
