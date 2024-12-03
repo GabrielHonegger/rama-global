@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Corben } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Whatsapp from "@/components/Whatsapp";
 import CookieConsent from "@/components/CookieConsent";
+import Script from 'next/script';
 
 const corben = Corben({ 
   weight: ["400"], 
@@ -31,16 +30,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-      <link rel="icon" href="/icon.ico"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/icon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body suppressHydrationWarning={true} className={corben.className}>
         <NavBar />
         {children}
         <Whatsapp />
         <Footer />
-        <Analytics />
-        <SpeedInsights />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-959213575"></Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-959213575');
+          `}
+        </Script>
         <CookieConsent />
       </body>
     </html>
