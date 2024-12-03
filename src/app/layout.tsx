@@ -6,7 +6,6 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Whatsapp from "@/components/Whatsapp";
 import CookieConsent from "@/components/CookieConsent";
-import Script from 'next/script';
 
 const corben = Corben({ 
   weight: ["400"], 
@@ -38,15 +37,6 @@ export default function RootLayout({
         {children}
         <Whatsapp />
         <Footer />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-959213575"></Script>
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-959213575');
-          `}
-        </Script>
         <CookieConsent />
       </body>
     </html>
