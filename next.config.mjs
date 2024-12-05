@@ -13,7 +13,7 @@ const nextConfig = {
               default-src 'self';
               script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://www.googleadservices.com https://googleads.g.doubleclick.net;
               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com;
-              img-src 'self' data: https://www.googletagmanager.com https://fonts.gstatic.com;
+              img-src 'self' data: https://www.googletagmanager.com https://fonts.gstatic.com https://www.google.com;
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.google.com.br;
               font-src 'self' https://fonts.gstatic.com;
               frame-src 'self' https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net;
