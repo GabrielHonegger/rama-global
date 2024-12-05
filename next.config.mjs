@@ -16,7 +16,7 @@ const nextConfig = {
               img-src 'self' data: https://www.googletagmanager.com https://fonts.gstatic.com https://www.google.com https://www.google.com.br;
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.google.com.br;
               font-src 'self' https://fonts.gstatic.com;
-              frame-src 'self' https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net;
+              frame-src 'self' https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net https://vercel.live;
               frame-ancestors 'none';
               object-src 'none';`
               .replace(/\s{2,}/g, " ")
