@@ -17,7 +17,7 @@ const Footer = () => {
             <li><Link href="/termos-de-uso">Termos de Uso</Link></li>
         </ul>
         <p className='text-white text-center text-sm md:text-md'>
-            Direitos autorais © 2024 Rama Global. Todos os direitos reservados.
+            Direitos autorais © 2025 Rama Global. Todos os direitos reservados.
         </p>
     </div>
   )
