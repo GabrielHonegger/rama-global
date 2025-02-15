@@ -12,6 +12,7 @@ const Clients = () => {
           Conheça alguns de nossos clientes
         </h2>
         <div className="grid md:w-10/12 sm:w-full m-auto lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-between mt-8">
+            <ClientImage cliendId='36' imgFormat='jpg' />
             <ClientImage cliendId='1' imgFormat='png' />
             <ClientImage cliendId='3' imgFormat='png' />
             <ClientImage cliendId='4' imgFormat='png' />

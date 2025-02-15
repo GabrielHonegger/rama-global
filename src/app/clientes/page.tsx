@@ -12,6 +12,7 @@ const Clientes = () => {
           Há mais de 15 anos ajudando empresas a obterem certificações ecológicas.
         </h2>
         <div className="grid md:w-10/12 sm:w-full m-auto mb-10 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-between mt-8">
+            <ClientImage cliendId='36' imgFormat='jpg' />
             <ClientImage cliendId='1' imgFormat='png' />
             <ClientImage cliendId='3' imgFormat='png' />
             <ClientImage cliendId='4' imgFormat='png' />
