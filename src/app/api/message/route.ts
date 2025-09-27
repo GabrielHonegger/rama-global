@@ -10,7 +10,7 @@ const { window } = new JSDOM("");
 const purify = DOMPurify(window);
 
 const allowedOrigin = process.env.NODE_ENV === 'production'
-  ? 'https://ramaglobal.company'
+  ? 'https://ramaglobal.com.br'
   : '*';
 
 const formSchema = z.object({
@@ -78,8 +78,8 @@ export async function POST(request: Request) {
         }
 
         await resend.emails.send({
-            from: 'contato@ramaglobal.company',
-            to: 'contato@ramaglobal.company',
+            from: 'contato@ramaglobal.com.br',
+            to: 'contato@ramaglobal.com.br',
             subject: 'Novo Contato - Rama Global',
             react: Message(sanitizedData)
           });

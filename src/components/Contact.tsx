@@ -29,7 +29,7 @@ const Contact = () => {
               </div>
               <div className='pl-2'>
                 <h2 className="md:text-lg text-md mb-2">Nosso email:</h2>
-                <p className="md:text-lg text-md text-gray-600">contato@ramaglobal.company</p>
+                <p className="md:text-lg text-md text-gray-600">contato@ramaglobal.com.br</p>
               </div>
             </div>
             <div className="flex">
