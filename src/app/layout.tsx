@@ -31,6 +31,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="facebook-domain-verification" content="lqvrtaryyotfbjnd99fnn2y2p8fz09" />
         <GoogleTagManager gtmId="GTM-MDN8VD27" />
       </head>
       <body suppressHydrationWarning={true} className={corben.className}>
